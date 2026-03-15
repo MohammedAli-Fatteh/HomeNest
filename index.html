@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomeNest – Design Your Home Before You Buy</title>
+  <meta name="description" content="Browse furniture, compare sellers, read verified reviews, and plan your room layout before buying. India's complete home furnishing platform." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<header class="nav-header" id="nav-header">
+  <nav class="nav-container">
+    <a href="#" class="nav-logo" data-page="home">
+      <span class="logo-icon">🏠</span>
+      <span class="logo-text">HomeNest</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#" class="nav-link active" data-page="home" id="nav-home">Home</a></li>
+      <li><a href="#" class="nav-link" data-page="categories" id="nav-categories">Categories</a></li>
+      <li><a href="#" class="nav-link" data-page="planner" id="nav-planner">Room Planner</a></li>
+      <li><a href="#" class="nav-link" data-page="deals" id="nav-deals">Deals</a></li>
+      <li><a href="#" class="nav-link" data-page="sellers" id="nav-sellers">Sellers</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="search-bar" id="search-bar-toggle">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="global-search" placeholder="Search furniture..." class="search-input" />
+      </div>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle theme">
+        <span class="theme-icon" id="theme-icon">🌙</span>
+      </button>
+      <a href="#" class="nav-icon-btn" data-page="wishlist" id="nav-wishlist" title="Wishlist">
+        <span>🤍</span>
+        <span class="badge" id="wishlist-badge">0</span>
+      </a>
+      <a href="#" class="nav-icon-btn" data-page="cart" id="nav-cart" title="Cart">
+        <span>🛒</span>
+        <span class="badge" id="cart-badge">0</span>
+      </a>
+      <button class="btn btn-outline btn-sm nav-signin-btn" id="nav-signin-btn" onclick="openAuthModal('login')">Sign In</button>
+      <a href="#" class="nav-icon-btn" data-page="profile" id="nav-profile" title="Profile" style="display:none">
+        <span>👤</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ========== SEARCH OVERLAY ========== -->
+<div class="search-overlay" id="search-overlay">
+  <div class="search-overlay-inner">
+    <input type="text" id="search-overlay-input" placeholder="Search for sofas, beds, lamps..." class="search-overlay-input" />
+    <button class="search-close" id="search-close">✕</button>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main class="main-content" id="main-content">
+
+  <!-- ===== HOME PAGE ===== -->
+  <div class="page active" id="page-home">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-badge">✨ New Collection 2026</div>
+        <h1 class="hero-title">Design Your Home<br /><span class="hero-accent">Before You Buy</span></h1>
+        <p class="hero-subtitle">Explore thousands of furniture pieces, compare trusted sellers, read verified reviews, and visualize your dream room — all in one place.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-page="categories">Shop Now</button>
+          <button class="btn btn-outline" data-page="planner">Plan My Room</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">12K+</span><span class="stat-label">Products</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Sellers</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Satisfied</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card floating">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80" alt="Modern Living Room" />
+          <div class="hero-card-badge">⭐ 4.9 Top Pick</div>
+        </div>
+        <div class="hero-card-sm floating-delayed">
+          <div class="hc-icon">🛋️</div>
+          <div class="hc-label">300+ Sofas</div>
+        </div>
+        <div class="hero-card-sm hero-card-sm2 floating-delayed2">
+          <div class="hc-icon">🛏️</div>
+          <div class="hc-label">200+ Beds</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Shop by Category</h2>
+        <a href="#" class="see-all" data-page="categories">View all →</a>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" data-category="living-room">
+          <div class="cat-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Living Room" />
+          </div>
+          <div class="cat-info">
+            <span class="cat-icon">🛋️</span>
+            <span class="cat-name">Living Room</span>
+            <span class="cat-count">3 items</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="bedroom">
+          <div class="cat-img-wrap">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80" alt="Bedroom" />
+          </div>
+          <div class="cat-info">
+            <span class="cat-icon">🛏️</span>
+            <span class="cat-name">Bedroom</span>
+            <span class="cat-count">2 items</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="kitchen">
+          <div class="cat-img-wrap">
+            <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=400&q=80" alt="Kitchen" />
+          </div>
+          <div class="cat-info">
+            <span class="cat-icon">🍽️</span>
+            <span class="cat-name">Kitchen</span>
+            <span class="cat-count">1 item</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="lighting">
+          <div class="cat-img-wrap">
+            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80" alt="Lighting" />
+          </div>
+          <div class="cat-info">
+            <span class="cat-icon">💡</span>
+            <span class="cat-name">Lighting</span>
+            <span class="cat-count">2 items</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="curtains">
+          <div class="cat-img-wrap">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80" alt="Curtains" />
+          </div>
+          <div class="cat-info">
+            <span class="cat-icon">🪟</span>
+            <span class="cat-name">Curtains</span>
+            <span class="cat-count">2 items</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="carpets">
+          <div class="cat-img-wrap">
+            <img src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=400&q=80" alt="Carpets" />
+          </div>
+          <div class="cat-info">
+            <span class="cat-icon">🪵</span>
+            <span class="cat-name">Carpets & Rugs</span>
+            <span class="cat-count">2 items</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Home Essentials Bundle -->
+    <section class="section bundle-section">
+      <div class="bundle-card">
+        <div class="bundle-content">
+          <div class="bundle-tag">🎁 Limited Offer</div>
+          <h2 class="bundle-title">New Home Essentials Bundle</h2>
+          <p class="bundle-desc">Everything you need to furnish your new home — sofa, bed, dining table, floor lamp, rug, and curtains. Save up to 30%.</p>
+          <div class="bundle-items">
+            <span class="bundle-item">🛋️ Sofa</span>
+            <span class="bundle-item">🛏️ Bed</span>
+            <span class="bundle-item">🍽️ Table</span>
+            <span class="bundle-item">💡 Lamp</span>
+            <span class="bundle-item">🪵 Rug</span>
+            <span class="bundle-item">🪟 Curtains</span>
+          </div>
+          <div class="bundle-pricing">
+            <span class="bundle-old">₹1,38,000</span>
+            <span class="bundle-price">₹96,600</span>
+            <span class="bundle-save">Save 30%</span>
+          </div>
+          <button class="btn btn-primary" onclick="showToast('Bundle added to cart! 🎉', 'success')">Get Bundle Deal</button>
+        </div>
+        <div class="bundle-visual">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80" alt="Home Bundle" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Rated Products -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Top Rated Products</h2>
+        <a href="#" class="see-all" data-page="categories">See all →</a>
+      </div>
+      <div class="products-grid" id="home-top-rated"></div>
+    </section>
+
+    <!-- Trusted Sellers -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Trusted Sellers</h2>
+        <a href="#" class="see-all" data-page="sellers">View all →</a>
+      </div>
+      <div class="sellers-row" id="home-sellers-row"></div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="section reviews-section">
+      <div class="section-header">
+        <h2 class="section-title">What Our Customers Say</h2>
+      </div>
+      <div class="reviews-marquee">
+        <div class="reviews-track" id="homepage-reviews-track"></div>
+      </div>
+    </section>
+
+  </div>
+  <!-- END HOME PAGE -->
+
+  <!-- ===== CATEGORIES PAGE ===== -->
+  <div class="page" id="page-categories">
+    <div class="page-header">
+      <h1 class="page-title">All Products</h1>
+      <p class="page-subtitle">Discover quality furniture for every room</p>
+    </div>
+
+    <div class="categories-page-layout">
+      <!-- Filters Sidebar -->
+      <aside class="filters-sidebar" id="filters-sidebar">
+        <div class="filter-header">
+          <h3>Filters</h3>
+          <button class="filter-reset" id="filter-reset">Reset</button>
+        </div>
+
+        <!-- Search -->
+        <div class="filter-group">
+          <label class="filter-label">Search</label>
+          <input type="text" id="filter-search" placeholder="Search products..." class="filter-input" />
+        </div>
+
+        <!-- Category -->
+        <div class="filter-group">
+          <label class="filter-label">Category</label>
+          <div class="filter-options" id="filter-category-options">
+            <label class="filter-check"><input type="radio" name="filter-cat" value="all" checked> All Categories</label>
+            <label class="filter-check"><input type="radio" name="filter-cat" value="living-room"> 🛋️ Living Room</label>
+            <label class="filter-check"><input type="radio" name="filter-cat" value="bedroom"> 🛏️ Bedroom</label>
+            <label class="filter-check"><input type="radio" name="filter-cat" value="kitchen"> 🍽️ Kitchen</label>
+            <label class="filter-check"><input type="radio" name="filter-cat" value="lighting"> 💡 Lighting</label>
+            <label class="filter-check"><input type="radio" name="filter-cat" value="curtains"> 🪟 Curtains</label>
+            <label class="filter-check"><input type="radio" name="filter-cat" value="carpets"> 🪵 Carpets</label>
+          </div>
+        </div>
+
+        <!-- Seller Type -->
+        <div class="filter-group">
+          <label class="filter-label">Seller Type</label>
+          <div class="filter-options">
+            <label class="filter-check"><input type="radio" name="filter-seller" value="all" checked> All Sellers</label>
+            <label class="filter-check"><input type="radio" name="filter-seller" value="branded"> 🏢 Branded</label>
+            <label class="filter-check"><input type="radio" name="filter-seller" value="local"> 🏠 Local</label>
+          </div>
+        </div>
+
+        <!-- Price Range -->
+        <div class="filter-group">
+          <label class="filter-label">Max Price: ₹<span id="price-val">80,000</span></label>
+          <input type="range" id="filter-price" min="1000" max="80000" step="500" value="80000" class="price-slider" />
+        </div>
+
+        <!-- Rating -->
+        <div class="filter-group">
+          <label class="filter-label">Min Rating</label>
+          <div class="filter-options">
+            <label class="filter-check"><input type="radio" name="filter-rating" value="0" checked> All Ratings</label>
+            <label class="filter-check"><input type="radio" name="filter-rating" value="4"> ⭐ 4+ Stars</label>
+            <label class="filter-check"><input type="radio" name="filter-rating" value="4.5"> ⭐ 4.5+ Stars</label>
+          </div>
+        </div>
+
+        <!-- Sort -->
+        <div class="filter-group">
+          <label class="filter-label">Sort By</label>
+          <select id="filter-sort" class="filter-select">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating-desc">Highest Rated</option>
+            <option value="name-asc">Name A–Z</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Products Grid -->
+      <div class="products-area">
+        <div class="products-toolbar">
+          <span class="products-count" id="products-count">12 products</span>
+          <button class="filter-toggle-mobile" id="filter-toggle-mobile">🔧 Filters</button>
+        </div>
+        <div class="products-grid" id="categories-products-grid"></div>
+      </div>
+    </div>
+  </div>
+  <!-- END CATEGORIES PAGE -->
+
+  <!-- ===== PRODUCT DETAIL PAGE ===== -->
+  <div class="page" id="page-product">
+    <div class="product-detail" id="product-detail-content"></div>
+  </div>
+  <!-- END PRODUCT DETAIL -->
+
+  <!-- ===== ROOM PLANNER PAGE ===== -->
+  <div class="page" id="page-planner">
+    <div class="page-header">
+      <h1 class="page-title">Room Planner</h1>
+      <p class="page-subtitle">Design your room before you buy</p>
+    </div>
+
+    <div class="planner-layout">
+      <!-- Controls Panel -->
+      <div class="planner-panel">
+        <div class="planner-section">
+          <h3>Room Size</h3>
+          <div class="room-size-inputs">
+            <div class="input-group">
+              <label>Length (m)</label>
+              <input type="number" id="room-length" value="5" min="2" max="20" step="0.5" />
+            </div>
+            <div class="input-group">
+              <label>Width (m)</label>
+              <input type="number" id="room-width" value="4" min="2" max="20" step="0.5" />
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm" id="apply-room-size">Apply Size</button>
+        </div>
+
+        <div class="planner-section">
+          <h3>Furniture</h3>
+          <p class="planner-hint">Drag items into the room</p>
+          <div class="furniture-palette" id="furniture-palette">
+            <div class="furniture-item" draggable="true" data-furniture="sofa" data-w="3" data-d="1.5" data-icon="🛋️">
+              <span class="fi-icon">🛋️</span><span class="fi-name">Sofa</span><span class="fi-size">3×1.5m</span>
+            </div>
+            <div class="furniture-item" draggable="true" data-furniture="bed" data-w="2" data-d="2.2" data-icon="🛏️">
+              <span class="fi-icon">🛏️</span><span class="fi-name">Bed</span><span class="fi-size">2×2.2m</span>
+            </div>
+            <div class="furniture-item" draggable="true" data-furniture="table" data-w="1.8" data-d="0.9" data-icon="🍽️">
+              <span class="fi-icon">🍽️</span><span class="fi-name">Table</span><span class="fi-size">1.8×0.9m</span>
+            </div>
+            <div class="furniture-item" draggable="true" data-furniture="coffee" data-w="1.2" data-d="0.6" data-icon="☕">
+              <span class="fi-icon">☕</span><span class="fi-name">Coffee Table</span><span class="fi-size">1.2×0.6m</span>
+            </div>
+            <div class="furniture-item" draggable="true" data-furniture="lamp" data-w="0.5" data-d="0.5" data-icon="💡">
+              <span class="fi-icon">💡</span><span class="fi-name">Floor Lamp</span><span class="fi-size">0.5×0.5m</span>
+            </div>
+            <div class="furniture-item" draggable="true" data-furniture="wardrobe" data-w="2" data-d="0.6" data-icon="🪞">
+              <span class="fi-icon">🪞</span><span class="fi-name">Wardrobe</span><span class="fi-size">2×0.6m</span>
+            </div>
+            <div class="furniture-item" draggable="true" data-furniture="desk" data-w="1.4" data-d="0.7" data-icon="💼">
+              <span class="fi-icon">💼</span><span class="fi-name">Desk</span><span class="fi-size">1.4×0.7m</span>
+            </div>
+            <div class="furniture-item" draggable="true" data-furniture="carpet" data-w="2.5" data-d="2" data-icon="🪵">
+              <span class="fi-icon">🪵</span><span class="fi-name">Rug</span><span class="fi-size">2.5×2m</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="planner-section">
+          <h3>Selected Item</h3>
+          <div class="selected-info" id="selected-info">
+            <p class="no-selection">No item selected</p>
+          </div>
+          <div class="planner-item-controls" id="planner-item-controls" style="display:none">
+            <button class="btn btn-sm btn-outline" id="rotate-item">↻ Rotate 90°</button>
+            <button class="btn btn-sm btn-danger" id="delete-item">🗑 Remove</button>
+          </div>
+        </div>
+
+        <div class="planner-section">
+          <h3>Layouts</h3>
+          <div class="layout-actions">
+            <button class="btn btn-sm btn-primary" id="save-layout">💾 Save Layout</button>
+            <button class="btn btn-sm btn-outline" id="clear-layout">🗑 Clear All</button>
+          </div>
+          <div class="saved-layouts" id="saved-layouts"></div>
+        </div>
+      </div>
+
+      <!-- Room Canvas -->
+      <div class="planner-canvas-wrap">
+        <div class="planner-toolbar">
+          <span class="room-label" id="room-label">Room: 5m × 4m</span>
+          <span class="planner-hint-text">Drag from palette · Click to select · Scroll to rotate · Del key to remove</span>
+        </div>
+        <div class="room-canvas-container" id="room-canvas-container">
+          <div class="room-canvas" id="room-canvas"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END ROOM PLANNER -->
+
+  <!-- ===== DEALS PAGE ===== -->
+  <div class="page" id="page-deals">
+    <div class="page-header">
+      <h1 class="page-title">🏷️ Today's Deals</h1>
+      <p class="page-subtitle">Limited-time offers on premium furniture</p>
+    </div>
+    <div class="deals-countdown">
+      <div class="countdown-label">Deals end in:</div>
+      <div class="countdown-timer" id="countdown-timer">
+        <div class="ct-block"><span id="ct-hours">08</span><small>Hours</small></div>
+        <div class="ct-sep">:</div>
+        <div class="ct-block"><span id="ct-mins">45</span><small>Mins</small></div>
+        <div class="ct-sep">:</div>
+        <div class="ct-block"><span id="ct-secs">22</span><small>Secs</small></div>
+      </div>
+    </div>
+    <div class="products-grid" id="deals-products-grid"></div>
+  </div>
+  <!-- END DEALS -->
+
+  <!-- ===== SELLERS PAGE ===== -->
+  <div class="page" id="page-sellers">
+    <div class="page-header">
+      <h1 class="page-title">Our Sellers</h1>
+      <p class="page-subtitle">Shop from trusted local and branded stores</p>
+    </div>
+    <div class="sellers-filter-tabs">
+      <button class="tab-btn active" data-seller-filter="all">All Sellers</button>
+      <button class="tab-btn" data-seller-filter="branded">🏢 Branded</button>
+      <button class="tab-btn" data-seller-filter="local">🏠 Local</button>
+    </div>
+    <div class="sellers-grid" id="sellers-grid"></div>
+  </div>
+  <!-- END SELLERS -->
+
+  <!-- ===== WISHLIST PAGE ===== -->
+  <div class="page" id="page-wishlist">
+    <div class="page-header">
+      <h1 class="page-title">🤍 My Wishlist</h1>
+      <p class="page-subtitle">Your saved favorite items</p>
+    </div>
+    <div class="products-grid" id="wishlist-grid"></div>
+    <div class="empty-state" id="wishlist-empty" style="display:none">
+      <div class="empty-icon">🤍</div>
+      <h3>Your wishlist is empty</h3>
+      <p>Save items you love by clicking the heart icon</p>
+      <button class="btn btn-primary" data-page="categories">Start Shopping</button>
+    </div>
+  </div>
+  <!-- END WISHLIST -->
+
+  <!-- ===== CART PAGE ===== -->
+  <div class="page" id="page-cart">
+    <div class="page-header">
+      <h1 class="page-title">🛒 Shopping Cart</h1>
+    </div>
+    <div class="cart-layout">
+      <div class="cart-items" id="cart-items-list"></div>
+      <div class="cart-summary" id="cart-summary">
+        <div class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">₹0</span></div>
+          <div class="summary-row"><span>Delivery</span><span id="summary-delivery">₹0</span></div>
+          <div class="summary-row"><span>Discount</span><span id="summary-discount" class="text-green">–₹0</span></div>
+          <div class="summary-row summary-total"><span>Total</span><span id="summary-total">₹0</span></div>
+          <button class="btn btn-primary btn-full" id="checkout-btn">Proceed to Checkout</button>
+          <div class="secure-badge">🔒 Secure & encrypted checkout</div>
+        </div>
+      </div>
+    </div>
+    <div class="empty-state" id="cart-empty" style="display:none">
+      <div class="empty-icon">🛒</div>
+      <h3>Your cart is empty</h3>
+      <p>Add some beautiful furniture to get started</p>
+      <button class="btn btn-primary" data-page="categories">Browse Products</button>
+    </div>
+  </div>
+  <!-- END CART -->
+
+  <!-- ===== PROFILE PAGE ===== -->
+  <div class="page" id="page-profile">
+    <div class="profile-layout">
+      <div class="profile-sidebar">
+        <div class="profile-avatar">
+          <div class="avatar-circle">👤</div>
+          <div class="profile-name" id="profile-name-display">Guest User</div>
+          <div class="profile-email" id="profile-email-display">Sign in to save your data</div>
+        </div>
+        <div class="profile-stats">
+          <div class="pstat"><span class="pstat-val" id="pstat-orders">0</span><span class="pstat-label">Orders</span></div>
+          <div class="pstat"><span class="pstat-val" id="pstat-wishlist">0</span><span class="pstat-label">Wishlist</span></div>
+          <div class="pstat"><span class="pstat-val" id="pstat-reviews">0</span><span class="pstat-label">Reviews</span></div>
+        </div>
+        <div class="profile-menu">
+          <button class="pmenu-item active" data-profile-tab="account">👤 Account</button>
+          <button class="pmenu-item" data-profile-tab="orders">📦 Orders</button>
+          <button class="pmenu-item" data-profile-tab="addresses">📍 Addresses</button>
+          <button class="pmenu-item" data-profile-tab="settings">⚙️ Settings</button>
+        </div>
+      </div>
+
+      <div class="profile-content">
+        <!-- Account Tab -->
+        <div class="profile-tab active" id="tab-account">
+          <h2>Account Information</h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="profile-name-input" placeholder="Your full name" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="profile-email-input" placeholder="your@email.com" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="profile-phone-input" placeholder="+91 98xxx xxxxx" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="profile-city-input" placeholder="Mumbai, Delhi, Bengaluru..." class="form-input" />
+            </div>
+          </div>
+          <button class="btn btn-primary" id="save-profile-btn">Save Changes</button>
+        </div>
+
+        <!-- Orders Tab -->
+        <div class="profile-tab" id="tab-orders">
+          <h2>My Orders</h2>
+          <div class="orders-list" id="orders-list">
+            <div class="empty-state-sm">
+              <span>📦</span>
+              <p>No orders yet. Start shopping!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Addresses Tab -->
+        <div class="profile-tab" id="tab-addresses">
+          <h2>Delivery Addresses</h2>
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Street Address</label>
+              <input type="text" id="address-street" placeholder="Street name and number" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="address-city" placeholder="City" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label>Postal Code</label>
+              <input type="text" id="address-zip" placeholder="12345" class="form-input" />
+            </div>
+          </div>
+          <button class="btn btn-primary" id="save-address-btn">Save Address</button>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="profile-tab" id="tab-settings">
+          <h2>Preferences</h2>
+          <div class="settings-list">
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Dark Mode</span>
+                <span class="setting-desc">Switch to dark theme</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="settings-dark-toggle" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Price Currency</span>
+                <span class="setting-desc">Display prices in Indian Rupee</span>
+              </div>
+              <select class="form-input" style="width:120px">
+                <option>₹ INR</option>
+                <option>$ USD</option>
+                <option>€ EUR</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Clear All Data</span>
+                <span class="setting-desc">Remove cart, wishlist, and saved data</span>
+              </div>
+              <button class="btn btn-danger btn-sm" id="clear-data-btn">Clear Data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END PROFILE -->
+
+  <!-- ===== SELLER DETAIL PAGE ===== -->
+  <div class="page" id="page-seller-detail">
+    <div id="seller-detail-content"></div>
+  </div>
+  <!-- END SELLER DETAIL -->
+
+</main>
+
+<!-- ========== TOAST NOTIFICATION ========== -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ========== CHECKOUT MODAL ========== -->
+<div class="modal-overlay" id="checkout-modal" style="display:none">
+  <div class="modal">
+    <button class="modal-close" id="checkout-modal-close">✕</button>
+    <div class="modal-icon">✅</div>
+    <h2 class="modal-title">Order Confirmed!</h2>
+    <p class="modal-body">Thank you for your order. Your furniture will be delivered within 3-7 business days.</p>
+    <div class="order-number">Order #HN-<span id="order-num">2026001</span></div>
+    <button class="btn btn-primary" id="continue-shopping-btn" data-page="home">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- ========== AUTH MODAL ========== -->
+<div class="modal-overlay" id="auth-modal" style="display:none">
+  <div class="modal auth-modal">
+    <button class="modal-close" onclick="closeAuthModal()">✕</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-auth="login" onclick="switchAuthTab('login')">Sign In</button>
+      <button class="auth-tab" data-auth="register" onclick="switchAuthTab('register')">Register</button>
+      <button class="auth-tab" data-auth="seller" onclick="switchAuthTab('seller')">Seller</button>
+    </div>
+
+    <!-- Login -->
+    <div class="auth-panel active" id="auth-login">
+      <div class="modal-icon" style="font-size:40px">👋</div>
+      <h2 class="modal-title">Welcome back!</h2>
+      <div class="auth-form">
+        <input type="email" id="login-email" placeholder="Email address" class="auth-input" />
+        <input type="password" id="login-password" placeholder="Password" class="auth-input" />
+        <button class="btn btn-primary btn-full" onclick="handleLogin()">Sign In</button>
+        <p class="auth-alt">Don't have an account? <a onclick="switchAuthTab('register')">Register</a></p>
+      </div>
+    </div>
+
+    <!-- Register -->
+    <div class="auth-panel" id="auth-register">
+      <div class="modal-icon" style="font-size:40px">🏠</div>
+      <h2 class="modal-title">Create Account</h2>
+      <div class="auth-form">
+        <input type="text" id="reg-name" placeholder="Full name" class="auth-input" />
+        <input type="email" id="reg-email" placeholder="Email address" class="auth-input" />
+        <input type="tel" id="reg-phone" placeholder="Phone (+91...)" class="auth-input" />
+        <input type="password" id="reg-password" placeholder="Password" class="auth-input" />
+        <button class="btn btn-primary btn-full" onclick="handleRegister()">Create Account</button>
+        <p class="auth-alt">Already have an account? <a onclick="switchAuthTab('login')">Sign In</a></p>
+      </div>
+    </div>
+
+    <!-- Seller Register -->
+    <div class="auth-panel" id="auth-seller">
+      <div class="modal-icon" style="font-size:40px">🏪</div>
+      <h2 class="modal-title">Become a Seller</h2>
+      <div class="auth-form">
+        <input type="text" id="seller-shop-name" placeholder="Shop / Business name" class="auth-input" />
+        <input type="text" id="seller-location" placeholder="City (e.g. Bengaluru, Delhi)" class="auth-input" />
+        <input type="email" id="seller-email" placeholder="Business email" class="auth-input" />
+        <input type="tel" id="seller-phone" placeholder="Contact number" class="auth-input" />
+        <select id="seller-type" class="auth-input">
+          <option value="local">🏠 Local Seller</option>
+          <option value="branded">🏢 Branded Store</option>
+        </select>
+        <button class="btn btn-primary btn-full" onclick="handleSellerRegister()">Register as Seller</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SELLER DASHBOARD MODAL ========== -->
+<div class="modal-overlay" id="seller-dashboard-modal" style="display:none">
+  <div class="modal seller-dash-modal">
+    <button class="modal-close" onclick="document.getElementById('seller-dashboard-modal').style.display='none'">✕</button>
+    <h2 class="modal-title" style="text-align:left;font-size:20px">🏪 Seller Dashboard</h2>
+    <div class="seller-dash-tabs">
+      <button class="auth-tab active" onclick="switchDashTab('add-product')">➕ Add Product</button>
+      <button class="auth-tab" onclick="switchDashTab('my-products')">📦 My Products</button>
+    </div>
+    <div class="auth-panel active" id="dash-add-product">
+      <div class="auth-form" style="margin-top:16px">
+        <input type="text" id="dp-name" placeholder="Product name" class="auth-input" />
+        <textarea id="dp-desc" placeholder="Product description..." class="auth-input" style="min-height:80px;resize:vertical"></textarea>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <input type="number" id="dp-price" placeholder="Price (₹)" class="auth-input" />
+          <input type="number" id="dp-original-price" placeholder="Original price (₹)" class="auth-input" />
+        </div>
+        <select id="dp-category" class="auth-input">
+          <option value="living-room">🛋️ Living Room</option>
+          <option value="bedroom">🛏️ Bedroom</option>
+          <option value="kitchen">🍽️ Kitchen</option>
+          <option value="lighting">💡 Lighting</option>
+          <option value="curtains">🪟 Curtains</option>
+          <option value="carpets">🪵 Carpets</option>
+        </select>
+        <input type="url" id="dp-image" placeholder="Image URL (from Unsplash, etc.)" class="auth-input" />
+        <input type="text" id="dp-tags" placeholder="Tags (comma separated: sofa, modern, teak)" class="auth-input" />
+        <select id="dp-badge" class="auth-input">
+          <option value="">No badge</option>
+          <option value="New">New</option>
+          <option value="Best Seller">Best Seller</option>
+          <option value="Deal">Deal</option>
+          <option value="Popular">Popular</option>
+          <option value="Sale">Sale</option>
+          <option value="Luxury">Luxury</option>
+        </select>
+        <button class="btn btn-primary btn-full" onclick="handleAddProduct()">➕ Add Product</button>
+      </div>
+    </div>
+    <div class="auth-panel" id="dash-my-products">
+      <div id="seller-my-products-list" style="margin-top:16px;max-height:400px;overflow-y:auto"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SCRIPTS ========== -->
+<script src="js/store.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script src="js/reviews.js"></script>
+<script src="js/sellers.js"></script>
+<script src="js/planner.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

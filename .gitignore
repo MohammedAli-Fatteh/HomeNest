@@ -1,0 +1,18 @@
+# General
+.DS_Store
+.env
+*.log
+
+# Project specific
+.gemini/
+.agent/
+_agent/
+_agents/
+.agents/
+brain/
+tmp/
+
+# If you use node modules in the future
+node_modules/
+dist/
+build/

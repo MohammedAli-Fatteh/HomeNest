@@ -1,0 +1,1194 @@
+[
+  {
+    "id": 1,
+    "name": "Scandinavian 3-Seater Sofa",
+    "category": "living-room",
+    "price": 45000,
+    "originalPrice": 58000,
+    "seller": "Urban Ladder",
+    "sellerType": "branded",
+    "sellerId": 1,
+    "rating": 4.8,
+    "reviewCount": 124,
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
+    "badge": "Best Seller",
+    "description": "A beautifully crafted Scandinavian 3-seater sofa with premium linen upholstery and solid teak wood legs. The low-profile silhouette and neutral tone make it perfect for Indian living rooms.",
+    "dimensions": {
+      "w": 220,
+      "d": 90,
+      "h": 85
+    },
+    "colors": [
+      "#F5F0EB",
+      "#8B7355",
+      "#2C2C2C"
+    ],
+    "inStock": true,
+    "tags": [
+      "sofa",
+      "living room",
+      "scandinavian"
+    ],
+    "plannerIcon": "sofa",
+    "verifiedReview": {
+      "score": 4.8,
+      "summary": "Exceptional build quality and comfort. Tested by our in-house experts over 30 days.",
+      "pros": [
+        "Durable linen fabric",
+        "Easy assembly",
+        "Excellent lumbar support"
+      ],
+      "cons": [
+        "Delivery takes 2 weeks"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Priya S.",
+        "rating": 5,
+        "comment": "Absolutely love it! My living room looks completely transformed.",
+        "date": "2026-02-10"
+      },
+      {
+        "user": "Rahul M.",
+        "rating": 4,
+        "comment": "Very comfortable, great quality for the price.",
+        "date": "2026-01-22"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Maharaja Queen Bed Frame",
+    "category": "bedroom",
+    "price": 18000,
+    "originalPrice": 22000,
+    "seller": "WoodenStreet",
+    "sellerType": "local",
+    "sellerId": 2,
+    "rating": 4.6,
+    "reviewCount": 87,
+    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80",
+    "badge": "Top Rated",
+    "description": "Elegant queen-size bed frame with a tall upholstered headboard in oyster white. Made from solid sheesham wood with a timeless silhouette.",
+    "dimensions": {
+      "w": 165,
+      "d": 210,
+      "h": 120
+    },
+    "colors": [
+      "#D4C5B0",
+      "#6B5744",
+      "#1A1A2E"
+    ],
+    "inStock": true,
+    "tags": [
+      "bed",
+      "bedroom",
+      "queen",
+      "sheesham"
+    ],
+    "plannerIcon": "bed",
+    "verifiedReview": {
+      "score": 4.6,
+      "summary": "Sturdy sheesham construction with a premium look. Great value for the price.",
+      "pros": [
+        "Solid sheesham wood",
+        "Beautiful headboard",
+        "Easy to assemble"
+      ],
+      "cons": [
+        "Slightly heavy to move"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Ananya K.",
+        "rating": 5,
+        "comment": "Love the design! Feels very premium and sturdy.",
+        "date": "2026-02-15"
+      },
+      {
+        "user": "Vikram B.",
+        "rating": 4,
+        "comment": "Good quality bed, delivery was prompt.",
+        "date": "2026-01-30"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Marble Top Dining Table",
+    "category": "kitchen",
+    "price": 28500,
+    "originalPrice": 35000,
+    "seller": "Pepperfry",
+    "sellerType": "branded",
+    "sellerId": 3,
+    "rating": 4.7,
+    "reviewCount": 63,
+    "image": "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&q=80",
+    "badge": "Deal",
+    "description": "Stunning Italian marble-top dining table with brushed brass legs. Seats 6 comfortably. A statement centrepiece for Indian dining rooms.",
+    "dimensions": {
+      "w": 180,
+      "d": 90,
+      "h": 76
+    },
+    "colors": [
+      "#F8F4EF",
+      "#C0A882"
+    ],
+    "inStock": true,
+    "tags": [
+      "table",
+      "dining",
+      "kitchen",
+      "marble"
+    ],
+    "plannerIcon": "table",
+    "verifiedReview": {
+      "score": 4.7,
+      "summary": "Genuine Makrana marble top with excellent finish. The brass legs add a luxurious touch.",
+      "pros": [
+        "Real marble",
+        "Sturdy base",
+        "Easy to clean"
+      ],
+      "cons": [
+        "Heavy to move"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Meera H.",
+        "rating": 5,
+        "comment": "The marble pattern is stunning, guests always compliment it!",
+        "date": "2026-02-20"
+      },
+      {
+        "user": "Arjun N.",
+        "rating": 4,
+        "comment": "Beautiful table, but it's very heavy. Make sure you have help.",
+        "date": "2026-01-18"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Arc Floor Lamp",
+    "category": "lighting",
+    "price": 3500,
+    "originalPrice": 4500,
+    "seller": "LightHouse",
+    "sellerType": "local",
+    "sellerId": 4,
+    "rating": 4.5,
+    "reviewCount": 45,
+    "image": "https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=600&q=80",
+    "badge": "New",
+    "description": "Contemporary arc floor lamp with a matte black finish and adjustable head. Creates perfect warm ambient lighting for reading corners and living rooms.",
+    "dimensions": {
+      "w": 30,
+      "d": 60,
+      "h": 180
+    },
+    "colors": [
+      "#1A1A1A",
+      "#F5F5F5",
+      "#C9B07A"
+    ],
+    "inStock": true,
+    "tags": [
+      "lamp",
+      "lighting",
+      "floor lamp",
+      "arc"
+    ],
+    "plannerIcon": "lamp",
+    "verifiedReview": {
+      "score": 4.5,
+      "summary": "Great ambient light with a stylish modern design. LED-compatible.",
+      "pros": [
+        "Adjustable arc arm",
+        "Stable weighted base",
+        "LED compatible"
+      ],
+      "cons": [
+        "Bulb not included"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Sana K.",
+        "rating": 5,
+        "comment": "Perfect lamp for my reading corner!",
+        "date": "2026-03-01"
+      },
+      {
+        "user": "Dev R.",
+        "rating": 4,
+        "comment": "Looks great, easy to assemble.",
+        "date": "2026-02-14"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Velvet Blackout Curtains",
+    "category": "curtains",
+    "price": 1800,
+    "originalPrice": 2500,
+    "seller": "WoodenStreet",
+    "sellerType": "local",
+    "sellerId": 2,
+    "rating": 4.4,
+    "reviewCount": 92,
+    "image": "https://images.unsplash.com/photo-1705944601101-fdb49dbf884c?w=600&q=80",
+    "badge": "Popular",
+    "description": "Luxurious velvet blackout curtains ideal for Indian summers. 100% light blocking with thermal insulation to keep rooms cool. Available in rich jewel tones.",
+    "dimensions": {
+      "w": 140,
+      "d": 1,
+      "h": 270
+    },
+    "colors": [
+      "#2C2C54",
+      "#7D2626",
+      "#8B7355",
+      "#1A1A1A"
+    ],
+    "inStock": true,
+    "tags": [
+      "curtains",
+      "blackout",
+      "bedroom",
+      "velvet"
+    ],
+    "plannerIcon": null,
+    "verifiedReview": {
+      "score": 4.4,
+      "summary": "Excellent blackout performance. Soft velvet texture with thermal benefits.",
+      "pros": [
+        "100% blackout",
+        "Thermal insulation",
+        "Machine washable"
+      ],
+      "cons": [
+        "Velvet attracts pet hair"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Nandini M.",
+        "rating": 5,
+        "comment": "Best curtains I've bought! Complete darkness even in afternoon.",
+        "date": "2026-02-28"
+      },
+      {
+        "user": "Aakash F.",
+        "rating": 4,
+        "comment": "Great quality, the colour is exactly as shown.",
+        "date": "2026-02-05"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Boho Wool Dhurrie Rug",
+    "category": "carpets",
+    "price": 12000,
+    "originalPrice": 16000,
+    "seller": "Urban Ladder",
+    "sellerType": "branded",
+    "sellerId": 1,
+    "rating": 4.9,
+    "reviewCount": 156,
+    "image": "https://images.unsplash.com/photo-1600166898405-da9535204843?w=600&q=80",
+    "badge": "Best Seller",
+    "description": "Handwoven Bohemian wool dhurrie rug with geometric patterns. Ultra-soft, incredibly durable, and perfect for Indian homes with high foot traffic.",
+    "dimensions": {
+      "w": 200,
+      "d": 300,
+      "h": 1
+    },
+    "colors": [
+      "#E8DDD0",
+      "#A67C5B",
+      "#4A4A4A"
+    ],
+    "inStock": true,
+    "tags": [
+      "rug",
+      "carpet",
+      "dhurrie",
+      "wool",
+      "boho"
+    ],
+    "plannerIcon": "carpet",
+    "verifiedReview": {
+      "score": 4.9,
+      "summary": "Exceptional handwoven quality. Thick pile with vibrant, fade-resistant colours.",
+      "pros": [
+        "Handwoven",
+        "Ultra soft",
+        "Non-slip backing",
+        "Easy to clean"
+      ],
+      "cons": [
+        "Needs flat laying initially"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Ritu A.",
+        "rating": 5,
+        "comment": "Absolutely gorgeous rug! So soft underfoot.",
+        "date": "2026-03-05"
+      },
+      {
+        "user": "Karan K.",
+        "rating": 5,
+        "comment": "The quality is outstanding. Worth every rupee.",
+        "date": "2026-02-18"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Floating Teak Bookshelf",
+    "category": "living-room",
+    "price": 9800,
+    "originalPrice": 13000,
+    "seller": "Pepperfry",
+    "sellerType": "branded",
+    "sellerId": 3,
+    "rating": 4.3,
+    "reviewCount": 41,
+    "image": "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&q=80",
+    "badge": "Sale",
+    "description": "5-tier floating bookshelf in solid teak with a minimalist profile. Holds up to 25 kg per shelf. Perfect for books, plants, and décor items.",
+    "dimensions": {
+      "w": 80,
+      "d": 30,
+      "h": 200
+    },
+    "colors": [
+      "#F5F0EB",
+      "#8B7355",
+      "#1A1A1A"
+    ],
+    "inStock": true,
+    "tags": [
+      "bookshelf",
+      "shelving",
+      "living room",
+      "teak"
+    ],
+    "plannerIcon": null,
+    "verifiedReview": {
+      "score": 4.3,
+      "summary": "Clean minimalist design with excellent load capacity. Easy to wall mount.",
+      "pros": [
+        "Minimal design",
+        "Strong load capacity",
+        "Easy assembly"
+      ],
+      "cons": [
+        "Wall mounting hardware not included"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Sneha S.",
+        "rating": 4,
+        "comment": "Perfect for my home office setup!",
+        "date": "2026-02-22"
+      },
+      {
+        "user": "Rohit T.",
+        "rating": 5,
+        "comment": "Exactly what I needed, looks stunning!",
+        "date": "2026-02-10"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Orthopaedic Memory Foam Mattress",
+    "category": "bedroom",
+    "price": 9500,
+    "originalPrice": 12000,
+    "seller": "SleepyCat",
+    "sellerType": "local",
+    "sellerId": 5,
+    "rating": 4.7,
+    "reviewCount": 203,
+    "image": "https://images.unsplash.com/photo-1647376036543-f9f543601a1d?w=600&q=80",
+    "badge": "Top Rated",
+    "description": "Premium orthopaedic memory foam mattress with 7-zone pressure relief and cooling gel technology. Ideal for hot Indian summers. 10-year warranty.",
+    "dimensions": {
+      "w": 180,
+      "d": 200,
+      "h": 30
+    },
+    "colors": [
+      "#F0F0F0"
+    ],
+    "inStock": true,
+    "tags": [
+      "mattress",
+      "bedroom",
+      "memory foam",
+      "orthopedic"
+    ],
+    "plannerIcon": null,
+    "verifiedReview": {
+      "score": 4.7,
+      "summary": "Outstanding pressure relief with cooling technology. Sleep quality dramatically improved.",
+      "pros": [
+        "Orthopaedic support",
+        "Cooling gel layer",
+        "10-year warranty",
+        "Motion isolation"
+      ],
+      "cons": [
+        "Slight off-gassing initially"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Jyoti A.",
+        "rating": 5,
+        "comment": "Best sleep of my life! No more back pain.",
+        "date": "2026-03-08"
+      },
+      {
+        "user": "Manish R.",
+        "rating": 4,
+        "comment": "Very comfortable, took a few days to fully expand.",
+        "date": "2026-02-25"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Rattan Pendant Cluster Light",
+    "category": "lighting",
+    "price": 15500,
+    "originalPrice": 19000,
+    "seller": "Urban Ladder",
+    "sellerType": "branded",
+    "sellerId": 1,
+    "rating": 4.6,
+    "reviewCount": 78,
+    "image": "https://images.unsplash.com/photo-1762423760466-2bb5a3eec495?w=600&q=80",
+    "badge": "Deal",
+    "description": "Stunning rattan-weave cluster pendant light with warm Edison bulbs. Creates a dramatic, cosy focal point in dining and living areas.",
+    "dimensions": {
+      "w": 60,
+      "d": 60,
+      "h": 80
+    },
+    "colors": [
+      "#C9B07A",
+      "#1A1A1A",
+      "#F5F5F5"
+    ],
+    "inStock": true,
+    "tags": [
+      "pendant",
+      "lighting",
+      "ceiling",
+      "rattan"
+    ],
+    "plannerIcon": null,
+    "verifiedReview": {
+      "score": 4.6,
+      "summary": "Visually stunning rattan piece that elevates any room with warm glow.",
+      "pros": [
+        "Eye-catching design",
+        "Warm Edison glow",
+        "Adjustable cable length"
+      ],
+      "cons": [
+        "Professional installation recommended"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Diya M.",
+        "rating": 5,
+        "comment": "Statement piece! Everyone who visits asks about it.",
+        "date": "2026-03-12"
+      },
+      {
+        "user": "Sameer K.",
+        "rating": 4,
+        "comment": "Beautiful light but installation was a bit tricky.",
+        "date": "2026-03-02"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Lift-Top Coffee Table",
+    "category": "living-room",
+    "price": 7500,
+    "originalPrice": 10000,
+    "seller": "WoodenStreet",
+    "sellerType": "local",
+    "sellerId": 2,
+    "rating": 4.5,
+    "reviewCount": 55,
+    "image": "https://images.unsplash.com/photo-1542372147193-a7aca54189cd?w=600&q=80",
+    "badge": "New",
+    "description": "Modern lift-top coffee table with hidden storage compartment and integrated USB-C charging ports. Perfect for compact Indian apartments.",
+    "dimensions": {
+      "w": 120,
+      "d": 60,
+      "h": 45
+    },
+    "colors": [
+      "#2C2C2C",
+      "#F5F0EB"
+    ],
+    "inStock": true,
+    "tags": [
+      "coffee table",
+      "living room",
+      "smart",
+      "storage"
+    ],
+    "plannerIcon": "table",
+    "verifiedReview": {
+      "score": 4.5,
+      "summary": "Innovative design with practical storage and USB charging. A space-saver.",
+      "pros": [
+        "Hidden storage",
+        "USB charging ports",
+        "Lift-top mechanism",
+        "Compact design"
+      ],
+      "cons": [
+        "USB cable management could be neater"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Hina J.",
+        "rating": 5,
+        "comment": "Love the storage and charging feature. Very practical!",
+        "date": "2026-03-10"
+      },
+      {
+        "user": "Kartik A.",
+        "rating": 4,
+        "comment": "Smart design, looks modern and clean.",
+        "date": "2026-02-28"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Linen Sheer Curtains",
+    "category": "curtains",
+    "price": 2800,
+    "originalPrice": 3500,
+    "seller": "Pepperfry",
+    "sellerType": "branded",
+    "sellerId": 3,
+    "rating": 4.3,
+    "reviewCount": 67,
+    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80",
+    "badge": "Popular",
+    "description": "Elegant sheer linen curtains that diffuse light beautifully. Airy and light — ideal for Indian living rooms and dining areas.",
+    "dimensions": {
+      "w": 140,
+      "d": 1,
+      "h": 250
+    },
+    "colors": [
+      "#F8F4EF",
+      "#E8DDD0",
+      "#C8C0B0"
+    ],
+    "inStock": true,
+    "tags": [
+      "curtains",
+      "sheer",
+      "linen",
+      "living room"
+    ],
+    "plannerIcon": null,
+    "verifiedReview": {
+      "score": 4.3,
+      "summary": "Beautiful light diffusion with an airy, natural feel. Machine washable.",
+      "pros": [
+        "Natural linen feel",
+        "Airy and light",
+        "Machine washable"
+      ],
+      "cons": [
+        "Needs ironing after washing"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Aarthi N.",
+        "rating": 4,
+        "comment": "Gives such a beautiful soft light in the morning.",
+        "date": "2026-02-26"
+      },
+      {
+        "user": "Zeeshan H.",
+        "rating": 5,
+        "comment": "Perfect for my lounge, great quality.",
+        "date": "2026-02-14"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Persian Silk Blend Rug",
+    "category": "carpets",
+    "price": 8500,
+    "originalPrice": 12000,
+    "seller": "SleepyCat",
+    "sellerType": "local",
+    "sellerId": 5,
+    "rating": 4.8,
+    "reviewCount": 33,
+    "image": "https://images.unsplash.com/photo-1531162805941-58330188d75c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGx1eHVyeSUyMHBlcnNpYW4lMjBydWd8ZW58MHx8MHx8fDA%3D",
+    "badge": "Luxury",
+    "description": "Exquisite Persian-inspired silk blend rug with intricate floral patterns and deep jewel tones. Handknotted by artisans in Jaipur. A true heirloom centrepiece.",
+    "dimensions": {
+      "w": 250,
+      "d": 350,
+      "h": 1
+    },
+    "colors": [
+      "#8B1A1A",
+      "#C9B07A",
+      "#1A3A5C"
+    ],
+    "inStock": true,
+    "tags": [
+      "rug",
+      "Persian",
+      "silk",
+      "luxury",
+      "Jaipur"
+    ],
+    "plannerIcon": "carpet",
+    "verifiedReview": {
+      "score": 4.8,
+      "summary": "Heirloom quality weaving from Jaipur artisans. Exceptional silk sheen.",
+      "pros": [
+        "Silk blend shimmer",
+        "Intricate pattern",
+        "Heirloom quality",
+        "Durable"
+      ],
+      "cons": [
+        "Dry clean only"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Riya K.",
+        "rating": 5,
+        "comment": "Breathtaking quality, looks even more beautiful in person!",
+        "date": "2026-03-11"
+      },
+      {
+        "user": "Faizan Q.",
+        "rating": 5,
+        "comment": "A true statement piece. Worth every rupee.",
+        "date": "2026-02-20"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "L-Shaped Sectional Sofa",
+    "category": "living-room",
+    "price": 72000,
+    "originalPrice": 92000,
+    "seller": "Urban Ladder",
+    "sellerType": "branded",
+    "sellerId": 1,
+    "rating": 4.7,
+    "reviewCount": 89,
+    "image": "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&q=80",
+    "badge": "Best Seller",
+    "description": "Spacious L-shaped sectional sofa in premium leatherette finish. Modular design fits perfectly in large Indian drawing rooms. Converts to a lounger.",
+    "dimensions": {
+      "w": 280,
+      "d": 180,
+      "h": 85
+    },
+    "colors": [
+      "#2C2C2C",
+      "#8B7355",
+      "#F5F0EB"
+    ],
+    "inStock": true,
+    "tags": [
+      "sofa",
+      "sectional",
+      "L-shape",
+      "living room"
+    ],
+    "plannerIcon": "sofa",
+    "verifiedReview": {
+      "score": 4.7,
+      "summary": "Excellent modular sectional with premium leatherette. Perfect for large families.",
+      "pros": [
+        "Modular design",
+        "Premium leatherette",
+        "Converts to lounger",
+        "Easy to clean"
+      ],
+      "cons": [
+        "Large delivery size requires planning"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Suresh P.",
+        "rating": 5,
+        "comment": "The whole family fits! Absolutely love it.",
+        "date": "2026-03-01"
+      },
+      {
+        "user": "Geeta L.",
+        "rating": 4,
+        "comment": "Very comfortable and looks premium. Assembly took 2 hrs.",
+        "date": "2026-02-12"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Rattan Accent Chair",
+    "category": "living-room",
+    "price": 5500,
+    "originalPrice": 7500,
+    "seller": "WoodenStreet",
+    "sellerType": "local",
+    "sellerId": 2,
+    "rating": 4.4,
+    "reviewCount": 52,
+    "image": "https://images.unsplash.com/photo-1617325721270-06dce2689456?w=600&q=80",
+    "badge": "New",
+    "description": "Bohemian rattan accent chair with a round hourglass shape and plush cushion. Adds an artisanal tropical vibe to any Indian apartment or balcony.",
+    "dimensions": {
+      "w": 75,
+      "d": 75,
+      "h": 160
+    },
+    "colors": [
+      "#C9B07A",
+      "#F5F0EB"
+    ],
+    "inStock": true,
+    "tags": [
+      "chair",
+      "rattan",
+      "accent",
+      "living room",
+      "boho"
+    ],
+    "plannerIcon": "sofa",
+    "verifiedReview": {
+      "score": 4.4,
+      "summary": "Stylish rattan chair great for reading nooks and balconies.",
+      "pros": [
+        "Lightweight",
+        "Artisanal look",
+        "Comfortable cushion"
+      ],
+      "cons": [
+        "Not suitable for heavy use outdoors"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Pooja D.",
+        "rating": 5,
+        "comment": "Looks amazing in my balcony! So many compliments.",
+        "date": "2026-03-05"
+      },
+      {
+        "user": "Nikhil V.",
+        "rating": 4,
+        "comment": "Great chair but cushion could be thicker.",
+        "date": "2026-02-20"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Wooden Wardrobe",
+    "category": "bedroom",
+    "price": 38000,
+    "originalPrice": 48000,
+    "seller": "Pepperfry",
+    "sellerType": "branded",
+    "sellerId": 3,
+    "rating": 4.5,
+    "reviewCount": 71,
+    "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80",
+    "badge": "Popular",
+    "description": "2-door sheesham wood wardrobe with open cabinets. Fitted with soft-close hinges, adjustable shelves, and lockable storage. Built for Indian bedrooms.",
+    "dimensions": {
+      "w": 200,
+      "d": 55,
+      "h": 210
+    },
+    "colors": [
+      "#8B7355",
+      "#F5F0EB",
+      "#2C2C2C"
+    ],
+    "inStock": true,
+    "tags": [
+      "wardrobe",
+      "bedroom",
+      "sheesham",
+      "mirror",
+      "storage"
+    ],
+    "plannerIcon": "wardrobe",
+    "verifiedReview": {
+      "score": 4.5,
+      "summary": "Solid sheesham wardrobe with generous storage and a smooth finish.",
+      "pros": [
+        "Solid sheesham wood",
+        "Soft-close hinges",
+        "Lockable storage"
+      ],
+      "cons": [
+        "Assembly requires professional help"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Kavitha R.",
+        "rating": 5,
+        "comment": "Beautiful wardrobe, very spacious! Looks elegant.",
+        "date": "2026-02-24"
+      },
+      {
+        "user": "Rajesh M.",
+        "rating": 4,
+        "comment": "Good quality but assembly took a while.",
+        "date": "2026-02-08"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Smart LED Strip Lights",
+    "category": "lighting",
+    "price": 899,
+    "originalPrice": 1499,
+    "seller": "LightHouse",
+    "sellerType": "local",
+    "sellerId": 4,
+    "rating": 4.6,
+    "reviewCount": 310,
+    "image": "https://images.unsplash.com/photo-1614850715649-1d0106293bd1?w=600&q=80",
+    "badge": "Popular",
+    "description": "Wi-Fi enabled smart LED strip with 16 million colours, app & voice control (Alexa, Google). 5 metres long. Perfect for TV backlighting and room ambience.",
+    "dimensions": {
+      "w": 500,
+      "d": 1,
+      "h": 1
+    },
+    "colors": [
+      "#FF0000",
+      "#00FF00",
+      "#0000FF",
+      "#FFFFFF"
+    ],
+    "inStock": true,
+    "tags": [
+      "LED",
+      "strip light",
+      "smart",
+      "WiFi",
+      "lighting"
+    ],
+    "plannerIcon": null,
+    "verifiedReview": {
+      "score": 4.6,
+      "summary": "Excellent smart LED strip with reliable Wi-Fi connection and vibrant colours.",
+      "pros": [
+        "16M colour options",
+        "App controlled",
+        "Voice assistant compatible",
+        "Energy efficient"
+      ],
+      "cons": [
+        "App setup can be tricky initially"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Aarav S.",
+        "rating": 5,
+        "comment": "My room looks like a different universe! Amazing colours.",
+        "date": "2026-03-10"
+      },
+      {
+        "user": "Tanvi R.",
+        "rating": 4,
+        "comment": "Works great with Alexa. Really easy to use.",
+        "date": "2026-02-28"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "6-Seater Dining Set",
+    "category": "kitchen",
+    "price": 24000,
+    "originalPrice": 32000,
+    "seller": "WoodenStreet",
+    "sellerType": "local",
+    "sellerId": 2,
+    "rating": 4.6,
+    "reviewCount": 58,
+    "image": "https://images.unsplash.com/photo-1723750290151-164cb19ebab7?w=600&q=80",
+    "badge": "Deal",
+    "description": "Complete 6-seater dining set with a solid mango wood table and 6 padded chairs with leatherette cushions. Traditional craftsmanship with a modern finish.",
+    "dimensions": {
+      "w": 180,
+      "d": 90,
+      "h": 76
+    },
+    "colors": [
+      "#8B7355",
+      "#F5F0EB"
+    ],
+    "inStock": true,
+    "tags": [
+      "dining set",
+      "kitchen",
+      "table",
+      "chairs",
+      "mango wood"
+    ],
+    "plannerIcon": "table",
+    "verifiedReview": {
+      "score": 4.6,
+      "summary": "Solid mango wood set with excellent craftsmanship. Chairs are very comfortable.",
+      "pros": [
+        "Solid mango wood",
+        "Padded chairs",
+        "Traditional craftsmanship",
+        "Complete set"
+      ],
+      "cons": [
+        "Slight variations in wood grain (natural)"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Lakshmi P.",
+        "rating": 5,
+        "comment": "The whole family fits and it looks gorgeous!",
+        "date": "2026-03-07"
+      },
+      {
+        "user": "Ajay C.",
+        "rating": 4,
+        "comment": "Great value for a 6-seater set. Assembly took time.",
+        "date": "2026-02-22"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Geometric Rug",
+    "category": "carpets",
+    "price": 8500,
+    "originalPrice": 11000,
+    "seller": "Urban Ladder",
+    "sellerType": "branded",
+    "sellerId": 1,
+    "rating": 4.5,
+    "reviewCount": 88,
+    "image": "https://images.unsplash.com/photo-1752568583323-92145f90e6a8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "badge": "Popular",
+    "description": "Bold geometric hand-knotted rug in earthy tones. Made by artisans in Rajasthan using natural wool. Adds warmth and character to any room.",
+    "dimensions": {
+      "w": 150,
+      "d": 240,
+      "h": 1
+    },
+    "colors": [
+      "#E8DDD0",
+      "#C9B07A",
+      "#4A4A4A",
+      "#8B1A1A"
+    ],
+    "inStock": true,
+    "tags": [
+      "rug",
+      "geometric",
+      "hand-knotted",
+      "wool",
+      "Rajasthan"
+    ],
+    "plannerIcon": "carpet",
+    "verifiedReview": {
+      "score": 4.5,
+      "summary": "Superb hand-knotted quality from Rajasthani artisans. Rich earthy palette.",
+      "pros": [
+        "Handcrafted",
+        "Natural wool",
+        "Vibrant geometric pattern",
+        "Non-slip"
+      ],
+      "cons": [
+        "Colours may vary slightly from screen"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Shruti B.",
+        "rating": 5,
+        "comment": "Stunning rug! Completely ties the room together.",
+        "date": "2026-03-04"
+      },
+      {
+        "user": "Mihir J.",
+        "rating": 4,
+        "comment": "Great quality, arrived well packaged.",
+        "date": "2026-02-15"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Single Platform Bed",
+    "category": "bedroom",
+    "price": 8500,
+    "originalPrice": 12000,
+    "seller": "SleepyCat",
+    "sellerType": "local",
+    "sellerId": 5,
+    "rating": 4.3,
+    "reviewCount": 44,
+    "image": "https://images.unsplash.com/photo-1424847262089-18a6858bd7e2?w=600&q=80",
+    "badge": "Sale",
+    "description": "Minimalist single platform bed with hydraulic storage lift. Ideal for children's rooms or guest rooms in Indian homes. Comes flat-packed for easy delivery.",
+    "dimensions": {
+      "w": 100,
+      "d": 200,
+      "h": 30
+    },
+    "colors": [
+      "#8B7355",
+      "#2C2C2C"
+    ],
+    "inStock": true,
+    "tags": [
+      "bed",
+      "single",
+      "platform",
+      "storage",
+      "kids"
+    ],
+    "plannerIcon": "bed",
+    "verifiedReview": {
+      "score": 4.3,
+      "summary": "Good value single bed with useful hydraulic storage. Easy flat-pack delivery.",
+      "pros": [
+        "Hydraulic storage",
+        "Compact size",
+        "Easy assembly"
+      ],
+      "cons": [
+        "Hydraulic mechanism needs regular oiling"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Deepa L.",
+        "rating": 4,
+        "comment": "Great for my son's room. Storage is very helpful.",
+        "date": "2026-03-02"
+      },
+      {
+        "user": "Payal S.",
+        "rating": 5,
+        "comment": "Perfect size and the storage is a lifesaver!",
+        "date": "2026-02-18"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Jute Curtains",
+    "category": "curtains",
+    "price": 1800,
+    "originalPrice": 2400,
+    "seller": "Pepperfry",
+    "sellerType": "branded",
+    "sellerId": 3,
+    "rating": 4.2,
+    "reviewCount": 103,
+    "image": "https://images.unsplash.com/photo-1577926866949-c1ed2147d862?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGp1dGUlMjBkb29yJTIwY3VydGFpbnN8ZW58MHx8MHx8fDA%3D",
+    "badge": "Popular",
+    "description": "Eco-friendly jute woven door curtains with a natural earthy texture. Handloom crafted in West Bengal. Adds a warm Boho touch to Indian entrances and balconies.",
+    "dimensions": {
+      "w": 110,
+      "d": 1,
+      "h": 220
+    },
+    "colors": [
+      "#C9B07A",
+      "#E8DDD0"
+    ],
+    "inStock": true,
+    "tags": [
+      "curtains",
+      "jute",
+      "door",
+      "eco-friendly",
+      "boho"
+    ],
+    "plannerIcon": null,
+    "verifiedReview": {
+      "score": 4.2,
+      "summary": "Natural jute texture looks great and is very eco-friendly. Handwoven quality.",
+      "pros": [
+        "Eco-friendly jute",
+        "Handloom crafted",
+        "Unique texture",
+        "Lightweight"
+      ],
+      "cons": [
+        "Not blackout — best for doors not windows"
+      ]
+    },
+    "reviews": [
+      {
+        "user": "Varsha G.",
+        "rating": 4,
+        "comment": "Looks lovely at my balcony door. Very natural feel.",
+        "date": "2026-02-27"
+      },
+      {
+        "user": "Sunil P.",
+        "rating": 5,
+        "comment": "Excellent quality for the price. Love the texture.",
+        "date": "2026-02-10"
+      }
+    ]
+  }
+]
