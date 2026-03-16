@@ -12,12 +12,12 @@ HomeNest is a modern, minimalist e-commerce application designed to help users p
 
 Here is a breakdown of the repository and what each file controls. If you need to edit a specific feature, look for the corresponding file below:
 
-### 🏠 Root Directory
+### Root Directory
 - **`index.html`**: The single-page application (SPA) entry point. Contains the HTML structure for *all* pages (Home, Categories, Product Detail, Deals, Sellers, Cart, Wishlist, Profile, Planner).
 - **`README.md`**: This file. Documentation for the project.
 - **`context.md`**: A living document tracking the development context, features added, and project history.
 
-### 🎨 Styles (`/css/`)
+### Styles (`/css/`)
 - **`style.css`**: The global stylesheet. Contains:
   - CSS Variables (Colors, Typography, Spacing).
   - Reset and Base styles.
@@ -25,7 +25,7 @@ Here is a breakdown of the repository and what each file controls. If you need t
   - Page-specific layouts.
   - Dark mode overrides (`[data-theme="dark"]`).
 
-### ⚙️ JavaScript Modules (`/js/`)
+### JavaScript Modules (`/js/`)
 The JS is broken down into modules by feature. All are loaded in `index.html`.
 - **`app.js`**: The core controller. Handles SPA routing (`navigateTo`), global initialization (`init`), Dark/Light mode, global search, countdown timers, and Auth/Seller Dashboard modal logic.
 - **`store.js`**: The local database manager. Abstracts all `localStorage` operations (getting/setting cart items, wishlist, user profile, theme, and saved planner layouts).
@@ -36,7 +36,7 @@ The JS is broken down into modules by feature. All are loaded in `index.html`.
 - **`planner.js`**: The engine for the interactive Room Planner. Handles drag-and-drop, canvas rendering, furniture rotation/deletion, room resizing, and saving/loading layouts.
 - **`reviews.js`**: Handles rendering customer reviews on product pages and adding new user reviews.
 
-### 🗄️ Data (`/data/`)
+### Data (`/data/`)
 - **`products.json`**: The mock database for products. Edit this file to add, remove, or modify products, their prices (in ₹), images, descriptions, and linked sellers.
 - **`sellers.json`**: The mock database for sellers. Edit this file to update seller profiles, ratings, and locations.
 
