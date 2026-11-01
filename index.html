@@ -768,6 +768,9 @@
     <div class="auth-panel" id="dash-orders">
       <div id="seller-orders-list" style="margin-top:16px;max-height:400px;overflow-y:auto"></div>
     </div>
+    <div style="margin-top:20px;text-align:right">
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('seller-dashboard-modal').style.display='none';handleLogout()">Sign Out</button>
+    </div>
   </div>
 </div>
 
@@ -778,6 +781,9 @@
     <h2 class="modal-title" style="text-align:left;font-size:20px">🛡️ Admin — Pending Sellers</h2>
     <p style="font-size:13px;color:var(--text-3);margin-top:4px">Approve a seller before they can list products, or reject them.</p>
     <div id="admin-pending-sellers-list" style="margin-top:16px;max-height:420px;overflow-y:auto"></div>
+    <div style="margin-top:20px;text-align:right">
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('admin-dashboard-modal').style.display='none';handleLogout()">Sign Out</button>
+    </div>
   </div>
 </div>
 
