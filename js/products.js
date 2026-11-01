@@ -1,9 +1,38 @@
 /* products.js – product rendering, filtering, data loading */
 let allProducts = [];
 
+/* Backend products don't have every field the old static demo JSON had (no fake
+   rating/badge/originalPrice). This fills in safe defaults so the existing rendering
+   code below never has to special-case "real" vs "demo" products. */
+function adaptBackendProduct(p) {
+  return {
+    id: p.id,
+    name: p.name,
+    category: p.category || 'other',
+    price: p.price,
+    originalPrice: null,            // backend has no concept of a "was" price
+    seller: p.seller_name || 'HomeNest Seller',
+    sellerType: 'local',            // backend doesn't track branded vs local yet
+    sellerId: p.seller_id,
+    rating: p.rating_avg ?? 0,      // 0 (shown as unrated) until a real buyer reviews it
+    reviewCount: p.review_count ?? 0,
+    image: p.image_url || 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80',
+    badge: p.review_count >= 10 ? 'Top Rated' : null,
+    description: p.description || '',
+    stockQty: p.stock_qty,
+    inStock: p.stock_qty > 0,
+  };
+}
+
 async function loadProducts() {
-  const res = await fetch('data/products.json');
-  allProducts = await res.json();
+  try {
+    const backendProducts = await Api.listProducts();
+    allProducts = backendProducts.map(adaptBackendProduct);
+  } catch (err) {
+    console.error('Could not load products from the backend, falling back to demo data:', err);
+    const res = await fetch('data/products.json');
+    allProducts = await res.json();
+  }
   return allProducts;
 }
 
@@ -87,8 +116,6 @@ function renderProductGrid(products, containerId) {
 function showProductDetail(id) {
   const p = allProducts.find(x => x.id === id);
   if (!p) return;
-  const userReviews = Store.getProductReviews(id);
-  const allReviews = [...userReviews, ...(p.reviews || [])];
   const discount = p.originalPrice ? Math.round((1 - p.price/p.originalPrice)*100) : 0;
   const wished = Store.isWishlisted(p.id);
   const colorsHtml = (p.colors||[]).map((c,i) => `<div class="color-dot ${i===0?'active':''}" style="background:${c}" data-color="${c}"></div>`).join('');
@@ -140,45 +167,80 @@ function showProductDetail(id) {
     </div>
   </div>
   <div class="pd-reviews-section">
-    <h2>HomeNest Verified Review</h2>
-    ${p.verifiedReview ? `
-    <div class="verified-review-card">
-      <div class="vr-header">
-        <span class="vr-badge">✅ HomeNest Verified</span>
-        <span class="vr-score">${p.verifiedReview.score} ⭐</span>
-      </div>
-      <p class="vr-summary">${p.verifiedReview.summary}</p>
-      <div class="vr-pros-cons">
-        <div><strong style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:8px;display:block">Pros</strong>
-          <ul class="vr-list">${(p.verifiedReview.pros||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
-        </div>
-        <div><strong style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:8px;display:block">Cons</strong>
-          <ul class="vr-list vr-cons">${(p.verifiedReview.cons||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
-        </div>
-      </div>
-    </div>` : ''}
-    <h2>Customer Reviews (${allReviews.length})</h2>
+    <div id="pd-reviews-container"><p style="color:var(--text-3)">Loading reviews…</p></div>
+  </div>`;
+
+  document.querySelectorAll('.color-dot').forEach(d => {
+    d.addEventListener('click', () => { document.querySelectorAll('.color-dot').forEach(x=>x.classList.remove('active')); d.classList.add('active'); });
+  });
+
+  navigateTo('product');
+  renderReviewsSection(id);
+}
+
+/* The order_item a logged-in buyer is currently allowed to review for whichever
+   product's detail page is open — null if they haven't bought it, haven't paid yet,
+   or already reviewed this exact purchase. Set by renderReviewsSection(), read by
+   submitReview(). */
+let _reviewEligibleOrderItemId = null;
+
+async function renderReviewsSection(productId) {
+  const container = document.getElementById('pd-reviews-container');
+  if (!container) return;
+
+  let data;
+  try {
+    data = await Api.productReviews(productId);
+  } catch (err) {
+    container.innerHTML = `<p style="color:var(--text-3)">Couldn't load reviews: ${err.message}</p>`;
+    return;
+  }
+
+  _reviewEligibleOrderItemId = null;
+  let eligibilityNote = currentUser
+    ? 'Only buyers who have paid for this product can leave a review.'
+    : 'Sign in and purchase this product to write a review.';
+  if (currentUser) {
+    try {
+      const orders = await Api.myOrders();
+      for (const order of orders) {
+        const match = order.items.find(i => i.product_id === productId && !i.reviewed);
+        if (match) { _reviewEligibleOrderItemId = match.id; break; }
+      }
+      if (!_reviewEligibleOrderItemId) {
+        const boughtAny = orders.some(o => o.items.some(i => i.product_id === productId));
+        eligibilityNote = boughtAny
+          ? "You've already reviewed every purchase of this product."
+          : 'Buy this product to write a review.';
+      }
+    } catch { /* leave default message if the order check fails */ }
+  }
+
+  const starsRow = (n) => '★'.repeat(n) + '☆'.repeat(5 - n);
+
+  container.innerHTML = `
+    <h2>Customer Reviews ${data.average_rating !== null ? `· ${data.average_rating} ${starsRow(Math.round(data.average_rating))} (${data.review_count})` : '(no reviews yet)'}</h2>
     <div class="review-list" id="pd-review-list">
-      ${allReviews.map(r => `
+      ${data.reviews.length ? data.reviews.map(r => `
       <div class="review-item">
         <div class="ri-header">
-          <div><span class="ri-user">${r.user}</span> <span class="stars" style="font-size:12px;margin-left:8px">${'★'.repeat(r.rating)}</span></div>
-          <span class="ri-date">${r.date}</span>
+          <div><span class="ri-user">${r.buyer_name}</span> <span class="stars" style="font-size:12px;margin-left:8px">${starsRow(r.rating)}</span></div>
+          <span class="ri-date">${new Date(r.created_at).toLocaleDateString()}</span>
         </div>
-        <p class="ri-comment">${r.comment}</p>
-      </div>`).join('')}
+        <p class="ri-comment">${r.comment || ''}</p>
+      </div>`).join('') : '<p style="color:var(--text-3)">No reviews yet — be the first to buy and review this.</p>'}
     </div>
+    ${_reviewEligibleOrderItemId ? `
     <div class="add-review-card">
       <h3>Write a Review</h3>
-      <input class="review-name-input" id="rev-name" placeholder="Your name" />
       <div class="star-picker" id="star-picker" data-selected="0">
         ${[1,2,3,4,5].map(n=>`<span class="star-pick" data-val="${n}">★</span>`).join('')}
       </div>
       <textarea class="review-textarea" id="rev-text" placeholder="Share your experience..."></textarea>
       <br/><br/>
-      <button class="btn btn-primary" onclick="submitReview(${p.id})">Submit Review</button>
-    </div>
-  </div>`;
+      <button class="btn btn-primary" id="submit-review-btn" onclick="submitReview(${productId})">Submit Review</button>
+    </div>` : `<p style="color:var(--text-3);font-size:14px;margin-top:12px">${eligibilityNote}</p>`}
+  `;
 
   document.querySelectorAll('.star-pick').forEach(s => {
     s.addEventListener('click', () => {
@@ -187,11 +249,6 @@ function showProductDetail(id) {
       document.querySelectorAll('.star-pick').forEach((x,i) => x.classList.toggle('active', i < val));
     });
   });
-  document.querySelectorAll('.color-dot').forEach(d => {
-    d.addEventListener('click', () => { document.querySelectorAll('.color-dot').forEach(x=>x.classList.remove('active')); d.classList.add('active'); });
-  });
-
-  navigateTo('product');
 }
 
 /* Filter & Sort */
@@ -247,12 +304,15 @@ function initFilters() {
   });
 }
 
-function submitReview(productId) {
-  const name = document.getElementById('rev-name')?.value.trim();
+async function submitReview(productId) {
   const rating = parseInt(document.getElementById('star-picker')?.dataset.selected || 0);
   const comment = document.getElementById('rev-text')?.value.trim();
-  if (!name || !rating || !comment) { showToast('Please fill in all fields and select a rating', 'error'); return; }
-  Store.addReview(productId, { user: name, rating, comment });
-  showToast('Review submitted! Thank you 🙏', 'success');
-  showProductDetail(productId);
+  if (!rating) return showToast('Please select a star rating', 'error');
+  if (!_reviewEligibleOrderItemId) return showToast('You are not eligible to review this purchase', 'error');
+
+  await withButtonLoading(document.getElementById('submit-review-btn'), 'Submitting…', async () => {
+    await Api.createReview(productId, _reviewEligibleOrderItemId, rating, comment || null);
+    showToast('Review submitted! Thank you 🙏', 'success');
+    await renderReviewsSection(productId); // refresh the list + re-check eligibility (now used up)
+  });
 }

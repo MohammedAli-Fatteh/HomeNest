@@ -354,6 +354,21 @@
         </div>
 
         <div class="planner-section">
+          <h3>Budget Suggestions</h3>
+          <p class="planner-hint">Tell us your budget and priorities — we'll pick real products that fit, spending the most on what you listed first.</p>
+          <div class="input-group">
+            <label>Budget (₹)</label>
+            <input type="number" id="planner-budget" placeholder="e.g. 15000" min="0" step="500" />
+          </div>
+          <div class="input-group">
+            <label>What do you need? (in priority order)</label>
+            <input type="text" id="planner-categories" placeholder="sofa, table, lamp" />
+          </div>
+          <button class="btn btn-sm btn-primary" id="suggest-budget-btn">✨ Suggest Products</button>
+          <div id="budget-suggestions-result" style="margin-top:12px"></div>
+        </div>
+
+        <div class="planner-section">
           <h3>Furniture</h3>
           <p class="planner-hint">Drag items into the room</p>
           <div class="furniture-palette" id="furniture-palette">
@@ -398,7 +413,7 @@
         <div class="planner-section">
           <h3>Layouts</h3>
           <div class="layout-actions">
-            <button class="btn btn-sm btn-primary" id="save-layout">💾 Save Layout</button>
+            <button class="btn btn-sm btn-primary" id="save-layout">💾 Save &amp; Get Share Link</button>
             <button class="btn btn-sm btn-outline" id="clear-layout">🗑 Clear All</button>
           </div>
           <div class="saved-layouts" id="saved-layouts"></div>
@@ -603,6 +618,13 @@
             </div>
             <div class="setting-item">
               <div class="setting-info">
+                <span class="setting-label">Sign Out</span>
+                <span class="setting-desc">Log out of your HomeNest account on this device</span>
+              </div>
+              <button class="btn btn-outline btn-sm" id="logout-btn">Sign Out</button>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
                 <span class="setting-label">Clear All Data</span>
                 <span class="setting-desc">Remove cart, wishlist, and saved data</span>
               </div>
@@ -653,6 +675,10 @@
       <div class="modal-icon" style="font-size:40px">👋</div>
       <h2 class="modal-title">Welcome back!</h2>
       <div class="auth-form">
+        <div id="google-signin-container" style="display:none;margin-bottom:12px">
+          <div id="google-signin-btn"></div>
+          <p style="text-align:center;font-size:12px;color:var(--text-3);margin:10px 0 2px">— or use email —</p>
+        </div>
         <input type="email" id="login-email" placeholder="Email address" class="auth-input" />
         <input type="password" id="login-password" placeholder="Password" class="auth-input" />
         <button class="btn btn-primary btn-full" onclick="handleLogin()">Sign In</button>
@@ -682,6 +708,7 @@
         <input type="text" id="seller-shop-name" placeholder="Shop / Business name" class="auth-input" />
         <input type="text" id="seller-location" placeholder="City (e.g. Bengaluru, Delhi)" class="auth-input" />
         <input type="email" id="seller-email" placeholder="Business email" class="auth-input" />
+        <input type="password" id="seller-password" placeholder="Password" class="auth-input" />
         <input type="tel" id="seller-phone" placeholder="Contact number" class="auth-input" />
         <select id="seller-type" class="auth-input">
           <option value="local">🏠 Local Seller</option>
@@ -701,6 +728,7 @@
     <div class="seller-dash-tabs">
       <button class="auth-tab active" onclick="switchDashTab('add-product')">➕ Add Product</button>
       <button class="auth-tab" onclick="switchDashTab('my-products')">📦 My Products</button>
+      <button class="auth-tab" onclick="switchDashTab('orders')">🧾 My Orders</button>
     </div>
     <div class="auth-panel active" id="dash-add-product">
       <div class="auth-form" style="margin-top:16px">
@@ -708,8 +736,10 @@
         <textarea id="dp-desc" placeholder="Product description..." class="auth-input" style="min-height:80px;resize:vertical"></textarea>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <input type="number" id="dp-price" placeholder="Price (₹)" class="auth-input" />
-          <input type="number" id="dp-original-price" placeholder="Original price (₹)" class="auth-input" />
+          <input type="number" id="dp-stock" placeholder="Stock quantity" class="auth-input" />
         </div>
+        <input type="url" id="dp-image" placeholder="Image URL (e.g. from Unsplash, or your own photo link)" class="auth-input" />
+        <p style="font-size:12px;color:var(--text-3);margin:-4px 0 8px">Paste a direct image link. Without one, a generic placeholder photo is used.</p>
         <select id="dp-category" class="auth-input">
           <option value="living-room">🛋️ Living Room</option>
           <option value="bedroom">🛏️ Bedroom</option>
@@ -735,10 +765,35 @@
     <div class="auth-panel" id="dash-my-products">
       <div id="seller-my-products-list" style="margin-top:16px;max-height:400px;overflow-y:auto"></div>
     </div>
+    <div class="auth-panel" id="dash-orders">
+      <div id="seller-orders-list" style="margin-top:16px;max-height:400px;overflow-y:auto"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ADMIN DASHBOARD MODAL ========== -->
+<div class="modal-overlay" id="admin-dashboard-modal" style="display:none">
+  <div class="modal seller-dash-modal">
+    <button class="modal-close" onclick="document.getElementById('admin-dashboard-modal').style.display='none'">✕</button>
+    <h2 class="modal-title" style="text-align:left;font-size:20px">🛡️ Admin — Pending Sellers</h2>
+    <p style="font-size:13px;color:var(--text-3);margin-top:4px">Approve a seller before they can list products, or reject them.</p>
+    <div id="admin-pending-sellers-list" style="margin-top:16px;max-height:420px;overflow-y:auto"></div>
   </div>
 </div>
 
 <!-- ========== SCRIPTS ========== -->
+<script>
+  // Point this at your backend. Use http://127.0.0.1:8000 while testing locally,
+  // and your real Render URL (e.g. https://homenest-api.onrender.com) once deployed.
+  window.HOMENEST_API_BASE = 'http://127.0.0.1:8000';
+
+  // Leave this blank until you've set up real Google OAuth credentials (see
+  // GOOGLE_SETUP.md in the backend project). The "Sign in with Google" button
+  // simply stays hidden until this is filled in — nothing else breaks.
+  window.HOMENEST_GOOGLE_CLIENT_ID = '';
+</script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/api.js"></script>
 <script src="js/store.js"></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>

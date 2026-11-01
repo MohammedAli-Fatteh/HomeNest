@@ -54,8 +54,11 @@ function renderCart() {
 
 function updateCartSummary(cart) {
   const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  const delivery = subtotal > 20000 ? 0 : 199;
-  const discount = subtotal > 30000 ? Math.round(subtotal * 0.05) : 0;
+  // Delivery/discount are kept at 0 so the total shown here always matches exactly
+  // what the backend computes and what Razorpay actually charges — no surprise
+  // difference at payment time.
+  const delivery = 0;
+  const discount = 0;
   const total = subtotal + delivery - discount;
   
   const subtotalEl = document.getElementById('summary-subtotal');
@@ -84,29 +87,90 @@ function removeCartItem(id) {
   showToast('Item removed from cart', 'info');
 }
 
-function initCart() {
-  const checkoutBtn = document.getElementById('checkout-btn');
-  if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', () => {
-      const cart = Store.getCart();
-      if (!cart.length) return;
-      const orderId = 'HN-' + Date.now().toString().slice(-6);
-      Store.addOrder({ 
-        id: orderId, 
-        items: cart, 
-        total: cart.reduce((s, i) => s + i.price * i.qty, 0), 
-        date: new Date().toISOString() 
-      });
-      Store.clearCart();
-      updateCartBadge();
-      renderCart();
-      const orderNumEl = document.getElementById('order-num');
-      if (orderNumEl) orderNumEl.textContent = orderId;
-      const modal = document.getElementById('checkout-modal');
-      if (modal) modal.style.display = 'flex';
-    });
+/* Loads Razorpay's Checkout.js once, the first time it's actually needed — not on
+   every page load — and reuses it after that. */
+let _razorpayScriptPromise = null;
+function loadRazorpayScript() {
+  if (window.Razorpay) return Promise.resolve();
+  if (_razorpayScriptPromise) return _razorpayScriptPromise;
+  _razorpayScriptPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = resolve;
+    script.onerror = () => reject(new Error('Could not load the payment widget. Check your connection.'));
+    document.head.appendChild(script);
+  });
+  return _razorpayScriptPromise;
+}
+
+function showOrderSuccess(orderId) {
+  Store.clearCart();
+  updateCartBadge();
+  renderCart();
+  const orderNumEl = document.getElementById('order-num');
+  if (orderNumEl) orderNumEl.textContent = `#${orderId}`;
+  const modal = document.getElementById('checkout-modal');
+  if (modal) modal.style.display = 'flex';
+}
+
+async function handleCheckout() {
+  const cart = Store.getCart();
+  if (!cart.length) return;
+
+  if (!currentUser) {
+    showToast('Please sign in to place an order', 'info');
+    openAuthModal('login');
+    return;
   }
-  
+
+  const checkoutBtn = document.getElementById('checkout-btn');
+  await withButtonLoading(checkoutBtn, 'Placing order…', async () => {
+    const items = cart.map(i => ({ product_id: i.id, quantity: i.qty }));
+    const result = await Api.checkout(items); // throws with a clear message if something's out of stock
+
+    if (result.razorpay_key_id === 'mock_key') {
+      // Local/demo mode: the backend has no real Razorpay keys configured yet, so we
+      // simulate a successful payment instead of opening a real payment popup. See
+      // RAZORPAY_SETUP.md on the backend for how to switch to the real popup.
+      await Api.verifyPayment(result.order_id, `pay_demo_${Date.now()}`, 'mock_signature');
+      showOrderSuccess(result.order_id);
+      return;
+    }
+
+    await loadRazorpayScript();
+    const razorpay = new Razorpay({
+      key: result.razorpay_key_id,
+      amount: result.amount_paise,
+      currency: result.currency,
+      order_id: result.razorpay_order_id,
+      name: 'HomeNest',
+      description: `Order #${result.order_id}`,
+      prefill: { name: currentUser.name, email: currentUser.email },
+      theme: { color: '#D4714E' },
+      handler: async (response) => {
+        try {
+          await Api.verifyPayment(result.order_id, response.razorpay_payment_id, response.razorpay_signature);
+          showOrderSuccess(result.order_id);
+        } catch (err) {
+          showToast(`Payment could not be confirmed: ${err.message}`, 'error');
+        }
+      },
+      modal: {
+        ondismiss: async () => {
+          // The buyer closed the payment popup without paying — release the stock we
+          // reserved at checkout instead of leaving it locked up forever.
+          try { await Api.cancelOrder(result.order_id); } catch { /* already handled server-side on its own */ }
+          showToast('Payment cancelled — your cart is unchanged', 'info');
+        },
+      },
+    });
+    razorpay.open();
+  });
+}
+
+function initCart() {
+  document.getElementById('checkout-btn')?.addEventListener('click', handleCheckout);
+
   document.getElementById('checkout-modal-close')?.addEventListener('click', () => {
     const modal = document.getElementById('checkout-modal');
     if (modal) modal.style.display = 'none';

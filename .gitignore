@@ -16,3 +16,9 @@ tmp/
 node_modules/
 dist/
 build/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
