@@ -1,112 +1,88 @@
-# Deploying HomeNest — backend on Render, frontend stays on Netlify
+# Deploying HomeNest
 
-You don't need to move your frontend. Netlify hosts static sites (HTML/CSS/JS) well,
-and Render is where the Python backend actually needs to run (real SQL, background
-server process — not something Netlify or Firebase does). This is the standard,
-free way to deploy exactly this kind of project.
+HomeNest runs in three places:
 
-## Part 1 — Deploy the backend to Render
+- **Frontend:** GitHub Pages, served from the `HomeNest` repo root.
+- **Backend:** Render, a free web service built from the `backend/` folder.
+- **Database:** Neon, a free serverless Postgres database.
 
-1. This backend lives in a `backend/` folder inside your existing HomeNest repo
-   (same repo as the frontend — a "monorepo"). Push it there: your repo's root
-   should end up with `index.html`, `js/`, `css/`, `data/` (the frontend, already
-   there) sitting next to a new `backend/` folder (this project) AND a
-   `render.yaml` file at the very root of the repo (NOT inside `backend/` — Render
-   requires it at the repo root to auto-detect the Blueprint). Both are included
-   in this zip, already arranged in that exact layout.
-2. Make sure `backend/.env` is in `.gitignore` (already added, inside
-   `backend/.gitignore`) so your real secrets never get committed — only
-   `backend/.env.example` (placeholders) should be in the repo.
-3. Go to https://dashboard.render.com, sign up free (GitHub login is easiest).
-4. Click **New +** → **Blueprint**, pick your HomeNest repo. Render reads the
-   root-level `render.yaml`, sees `rootDir: backend` on the web service, and
-   builds/runs everything from inside `backend/` automatically. It sets up both:
-   - A free Postgres database (`homenest-db`)
-   - A free web service (`homenest-api`) running your FastAPI app
-   It also auto-generates `JWT_SECRET` and wires `DATABASE_URL` to the new database
-   for you — you don't type either of those in.
-5. Click **Apply**. First deploy takes a few minutes. When it's done, Render gives
-   you a URL like `https://homenest-api.onrender.com`.
-6. **Free tier note**: a free Render web service "spins down" after 15 minutes of
-   no traffic, and the next request takes ~30–50 seconds to wake it back up. This
-   is fine for a portfolio project, but mention it if you're demoing live — or open
-   the URL yourself a minute before your interview to "wake it up" in advance.
-7. **Important free-tier limit**: Render's free Postgres database is automatically
-   **deleted after 90 days**. For a resume project you revisit occasionally, set a
-   reminder to either upgrade it (a few dollars/month) or re-create and reseed it
-   before then — otherwise your live demo will silently stop working one day with
-   no warning.
+The backend reads its database address from an environment variable called `DATABASE_URL`. This is the only link between Render and Neon.
 
-## Part 2 — Seed your live database with demo products
+## Before you start
 
-Run the seed script once, pointed at your REAL Render database instead of your
-local test one:
+You need:
+- A GitHub account with the `HomeNest` repo pushed, including `render.yaml` at the repo root and the `backend/` folder.
+- A Neon account (neon.tech), signed in with GitHub.
+- A Render account (dashboard.render.com), signed in with GitHub.
+- Python 3.12 on your computer, for seeding the database and creating the admin account.
 
-1. On the Render dashboard, open your `homenest-db` → copy its **External
-   Database URL** (not the internal one — internal only works from inside Render).
-2. On your own computer, inside the `backend` folder of your HomeNest repo:
-   ```
-   DATABASE_URL="<paste the external URL here>" python -m scripts.seed_demo_data
-   ```
-   (On Windows PowerShell: `$env:DATABASE_URL="..."; python -m scripts.seed_demo_data`)
-3. This only needs to run once — re-running later is still safe, it skips
-   anything already seeded (tested).
+## Part 1: Create the database on Neon
 
-## Part 3 — Create your real admin account
+1. Create a project. Choose the **Asia Pacific (Singapore)** region if it's available, since it's closest to India.
+2. Leave only **Postgres database** turned on.
+3. Click **Connect** and copy the connection string. It starts with `postgresql://` and ends with `?sslmode=require`.
+4. Keep the string private. Don't commit it to GitHub.
 
-There's no signup route for admin, by design (see GOOGLE_SETUP.md for why). Same
-idea as the seed script — run this once against your live `DATABASE_URL`:
+## Part 2: Deploy the backend on Render
 
-```python
-# save as scripts/make_admin.py temporarily, or run inline with python -c
-from app.database import SessionLocal
-from app.models import User, RoleEnum
-from app.security import hash_password
+1. Go to dashboard.render.com and click **New +** → **Blueprint**.
+2. Choose the `HomeNest` repo and click **Connect**.
+3. Give the blueprint a name, such as `HomeNest`.
+4. Fill in the environment values:
+   - `DATABASE_URL`: paste the Neon connection string.
+   - Leave `GOOGLE_CLIENT_ID`, `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` empty for now.
+5. Click **Deploy Blueprint** and wait until the status shows **Live**.
+6. Copy the service address shown at the top of the service page. It looks like `https://homenest-api-xxxx.onrender.com`.
+7. Open the address with `/health` added. You should see `{"status":"ok"}`.
 
-db = SessionLocal()
-db.add(User(name="Admin", email="your-real-email@example.com",
-            password_hash=hash_password("choose-a-real-password"), role=RoleEnum.admin))
-db.commit()
+`render.yaml` sets `rootDir: backend`, so Render builds the backend from that folder. It also sets `PYTHON_VERSION` to 3.12, because the pinned packages don't build on Python 3.14.
+
+## Part 3: Load demo data and create an admin
+
+Run these from the `backend/` folder on your computer, with the venv active. Replace the placeholders with your Neon string and your own details.
+
+Load the demo products:
+
+```
+$env:DATABASE_URL="PASTE_NEON_STRING_HERE"
+python -m scripts.seed_demo_data
 ```
 
-## Part 4 — Point your frontend at the live backend
+Create the admin account:
 
-In `index.html`, change the one line:
-```html
-window.HOMENEST_API_BASE = 'http://127.0.0.1:8000';
 ```
-to your real Render URL:
-```html
-window.HOMENEST_API_BASE = 'https://homenest-api.onrender.com';
+python -c "from app.database import SessionLocal; from app.models import User, RoleEnum; from app.security import hash_password; db=SessionLocal(); db.add(User(name='Admin', email='YOUR_EMAIL', password_hash=hash_password('YOUR_PASSWORD'), role=RoleEnum.admin)); db.commit(); print('admin created')"
 ```
-Push that change to your HomeNest frontend repo — Netlify will redeploy it
-automatically if it's already connected to your GitHub repo (which yours is,
-since it's already live). If you deploy from a local folder instead, just drag
-the updated folder onto Netlify's dashboard again.
 
-## Part 5 — Real Google sign-in and Razorpay (optional, do later)
+Use a password you don't use anywhere else.
 
-Both already work in a safe "mock"/disabled mode without these. When you're
-ready for the real versions: GOOGLE_SETUP.md and RAZORPAY_SETUP.md (both already
-in this project) have the exact steps — then just add the real keys as
-environment variables in Render's dashboard (Settings → Environment) for
-`GOOGLE_CLIENT_ID`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`. No code changes
-needed; the backend already reads them from the environment.
+## Part 4: Connect the frontend
 
-## One security note worth knowing (not blocking, just be aware)
+In `index.html`, make sure this line points at your Render address, with no trailing slash:
 
-`app/main.py` currently allows requests from ANY website (`allow_origins=["*"]`),
-which is how it's been built and tested this whole time. That's fine for a student
-project and totally normal to leave as-is for your interview — but if you ever ask
-"why would this be wrong in a real company," the honest answer is: it means any
-website on the internet could make requests to your API using a logged-in user's
-browser. Fixing it later is a one-line change — swap `["*"]` for
-`["https://your-real-netlify-url.netlify.app"]`. Good thing to mention
-proactively in an interview if asked about security tradeoffs you knowingly made.
+```
+window.HOMENEST_API_BASE = 'https://homenest-api-xxxx.onrender.com';
+```
 
-## Before your interview: a quick checklist
-- [ ] Backend deployed, `/health` on your Render URL returns `{"status":"ok"}`
-- [ ] Demo products seeded
-- [ ] Admin account created
-- [ ] Frontend's `HOMENEST_API_BASE` points at the live Render URL, redeployed
-- [ ] Opened the live site yourself once beforehand (wakes the free-tier server up)
+Commit and push. GitHub Pages republishes the site automatically within a few minutes.
+
+## Part 5: Check the live site
+
+1. Open the GitHub Pages address.
+2. Sign in with the admin account. You should see the welcome message.
+3. Click the 🛡️ icon. The pending sellers panel should open.
+
+If login fails with a network error, check that the frontend origin is listed in `backend/app/main.py` under `allow_origins`.
+
+## Notes
+
+- **Cold starts:** the free Render service sleeps after about 15 minutes with no traffic. The first request after that can take up to a minute. Open the health link a minute before a demo.
+- **Database limits:** Neon's free plan scales to zero when idle and is limited in storage. It's fine for a portfolio project.
+- **Secrets:** `DATABASE_URL`, `JWT_SECRET` and the Razorpay and Google keys live only in Render's environment settings. Never put them in the repo.
+- **Payments and Google sign-in:** both run in safe mode until their keys are added. Setup steps are in `backend/RAZORPAY_SETUP.md` and `backend/GOOGLE_SETUP.md`.
+
+## Local development
+
+Frontend: from the `HomeNest` folder, run `python -m http.server 5500` and open `http://127.0.0.1:5500`.
+
+Backend: in `backend/`, create a venv with Python 3.12, run `pip install -r requirements.txt`, set `DATABASE_URL=sqlite:///./homenest.db` in `backend/.env`, then run `uvicorn app.main:app --reload`.

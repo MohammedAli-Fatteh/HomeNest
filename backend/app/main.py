@@ -11,7 +11,11 @@ app = FastAPI(title="HomeNest API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # tighten this to your actual frontend URL before deploying
+    allow_origins=[
+        "https://mohammedali-fatteh.github.io",  # live frontend (GitHub Pages)
+        "http://127.0.0.1:5500",                 # local testing
+        "http://localhost:5500",                 # local testing
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )

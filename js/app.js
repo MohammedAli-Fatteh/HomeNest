@@ -194,9 +194,9 @@ function updateNavAuth() {
           document.getElementById('seller-dashboard-modal').style.display = 'flex';
           renderSellerDashProducts();
         } else if (currentUser.seller_status === 'pending') {
-          showToast('Your seller account is still awaiting admin approval.', 'info');
+          if (confirm('Your seller account is still awaiting admin approval. Sign out?')) handleLogout();
         } else {
-          showToast('Your seller application was not approved. Contact support.', 'error');
+          if (confirm('Your seller application was not approved. Sign out?')) handleLogout();
         }
       };
     }
