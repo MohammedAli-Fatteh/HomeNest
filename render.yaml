@@ -1,12 +1,5 @@
-# Render Blueprint for a monorepo: this repo also has the HomeNest frontend at its
-# root, so this backend service is anchored to the backend/ subfolder via rootDir.
-# On Render: New + -> Blueprint -> pick this repo -> Apply.
-databases:
-  - name: homenest-db
-    plan: free
-    databaseName: homenest
-    user: homenest
-
+# Render Blueprint for the HomeNest monorepo.
+# The database is Neon (external), so DATABASE_URL is entered in the Render dashboard.
 services:
   - type: web
     name: homenest-api
@@ -17,9 +10,7 @@ services:
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: DATABASE_URL
-        fromDatabase:
-          name: homenest-db
-          property: connectionString
+        sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRE_MINUTES
